@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    public Vector3 home;
+
     public float pSpeed; // float was originally int
     public float jumpPower; // float was originally int
     public float gravity; // float was originally int
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Camera camera;
 
+    NavMeshAgent agent;
 
     void Start()
     {
@@ -39,7 +43,8 @@ public class PlayerController : MonoBehaviour
         {
             camera = FindObjectOfType<Camera>();
         }
-
+        agent = GetComponent<NavMeshAgent>();
+        home = new Vector3(5f, 1f, 5f);
     }
 
     private void Update()
@@ -154,5 +159,15 @@ public class PlayerController : MonoBehaviour
     {
 
     }*/
+
+    public void SendHome()
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(home, out hit, 10f, NavMesh.AllAreas))
+        {
+            agent.Warp(hit.position);
+        }
+        
+    }
 
 }

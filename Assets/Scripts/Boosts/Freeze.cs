@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Freeze : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public static float timer;
+    bool activated = false;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        BA_GameManager.gm.freezeTimer += 10;
+        Destroy(gameObject);
     }
 }

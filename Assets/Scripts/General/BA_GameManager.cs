@@ -1,18 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class BA_GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static BA_GameManager gm;
+    public float freezeTimer;
+    public float slowTimer;
+    public float changeTimer;
+
+    public int captured;
+    public int total;
+    public float previousCapturedAttained;
+
     void Start()
     {
-        
+        gm = this;
+        captured = 0;
+
+        previousCapturedAttained = PlayerPrefs.GetFloat("Captured");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (freezeTimer > 0)
+        {
+            freezeTimer -= Time.deltaTime;
+        }
+
+        if (slowTimer > 0)
+        {
+            slowTimer -= Time.deltaTime;
+        }
+
+        if (changeTimer > 0)
+        {
+            changeTimer -= Time.deltaTime;
+        }
     }
 }

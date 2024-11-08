@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Avoid_Now_Hunt : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static float timer;
+    bool activated = false;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        BA_GameManager.gm.changeTimer += 30;
+        Destroy(gameObject);
     }
 }
