@@ -29,8 +29,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Camera camera;
 
-    NavMeshAgent agent;
-
+    public ObservedTransform playerTransform;
+    void Awake()
+    {
+        playerTransform.transform = transform;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,7 +46,6 @@ public class PlayerController : MonoBehaviour
         {
             camera = FindObjectOfType<Camera>();
         }
-        agent = GetComponent<NavMeshAgent>();
         home = new Vector3(5f, 1f, 5f);
     }
 
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         Vector3 inputTransformed = camera.transform.TransformDirection(input);
         inputTransformed.y = 0f;
-        input = inputTransformed.normalized * input.magnitude;        
+        input = inputTransformed.normalized * input.magnitude;
 
         if (input.magnitude > 1)
         {
@@ -162,12 +164,7 @@ public class PlayerController : MonoBehaviour
 
     public void SendHome()
     {
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(home, out hit, 10f, NavMesh.AllAreas))
-        {
-            agent.Warp(hit.position);
-        }
-        
+        transform.position = home;
     }
 
 }

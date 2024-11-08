@@ -26,7 +26,6 @@ public class Avoid : MonoBehaviour
         if (Vector3.Distance(transform.position, player.position) < 1.75f)
         {
             Debug.Log("Enemy reached player!");
-            player.GetComponent<PlayerController>()?.SendHome();
         }
         agent.SetDestination(player.position);
     }
