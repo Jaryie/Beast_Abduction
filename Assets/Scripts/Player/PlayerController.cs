@@ -30,8 +30,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Camera camera;
 
-    NavMeshAgent agent;
-
+    public ObservedTransform playerTransform;
+    void Awake()
+    {
+        playerTransform.transform = transform;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -44,7 +47,6 @@ public class PlayerController : MonoBehaviour
         {
             camera = FindObjectOfType<Camera>();
         }
-        agent = GetComponent<NavMeshAgent>();
         home = new Vector3(5f, 1f, 5f);
     }
 
@@ -162,10 +164,14 @@ public class PlayerController : MonoBehaviour
 
     public void SendHome()
     {
+
         NavMeshHit hit;
         if (NavMesh.SamplePosition(home, out hit, 10f, NavMesh.AllAreas))
         {
             agent.Warp(hit.position);
         }
+
+        transform.position = home;
+
     }
 }
