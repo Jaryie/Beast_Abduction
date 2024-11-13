@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 752839702}
   - component: {fileID: 752839701}
   - component: {fileID: 752839700}
+  - component: {fileID: 752839704}
   m_Layer: 5
   m_Name: MonsterDisplayCanvas
   m_TagString: Untagged
@@ -804,6 +805,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &752839704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752839699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f554f89080f13e4c8e4baf28aab286a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1610017028}
+  capturedText: {fileID: 1297316883}
+  totalText: {fileID: 389927312}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,6 +1597,7 @@ MonoBehaviour:
   airControlMultiplier: 1.6
   maxSpeed: 15
   camera: {fileID: 963194227}
+  playerTransform: {fileID: 0}
 --- !u!54 &1610017034
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1907,5 +1924,5 @@ SceneRoots:
   - {fileID: 1667787366}
   - {fileID: 1050028320}
   - {fileID: 752839703}
-  - {fileID: 2121732196}
   - {fileID: 227989995}
+  - {fileID: 2121732196}

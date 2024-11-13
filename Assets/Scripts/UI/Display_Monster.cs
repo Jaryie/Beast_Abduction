@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Display_Monster : MonoBehaviour
 {
     [SerializeField] GameObject Player;
-    [SerializeField] Text capturedText;
-    [SerializeField] Text totalText;
+    [SerializeField] TMP_Text capturedText;
+    [SerializeField] TMP_Text totalText;
 
-    public float captured;
-    public float total;
+    private float captured;
+    private float total;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

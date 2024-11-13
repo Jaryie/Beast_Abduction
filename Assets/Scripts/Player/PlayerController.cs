@@ -164,13 +164,11 @@ public class PlayerController : MonoBehaviour
 
     public void SendHome()
     {
-
         NavMeshHit hit;
         if (NavMesh.SamplePosition(home, out hit, 10f, NavMesh.AllAreas))
         {
             agent.Warp(hit.position);
         }
-
         transform.position = home;
 
     }
