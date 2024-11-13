@@ -17,6 +17,7 @@ public class Avoid : MonoBehaviour
         startPosition = transform.position;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+//        find.player = FindObjectOfType<PlayerController>().transform;
     }
 
     // Update is called once per frame

@@ -58,7 +58,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        if (CameraTarget == null)
+       if (CameraTarget == null)
         {
             // If we don't have a target (assigned by the player, create a dummy in the center of the scene).
             dummyTarget = new GameObject("Camera Target").transform;

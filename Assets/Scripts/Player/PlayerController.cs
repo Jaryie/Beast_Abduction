@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class PlayerController : MonoBehaviour
 {
     public Vector3 home;
@@ -35,9 +36,9 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        if (camera == null )
+        if (camera == null)
         {
-        camera = Camera.main;
+            camera = Camera.main;
         }
         if (camera == null)
         {
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         Vector3 inputTransformed = camera.transform.TransformDirection(input);
         inputTransformed.y = 0f;
-        input = inputTransformed.normalized * input.magnitude;        
+        input = inputTransformed.normalized * input.magnitude;
 
         if (input.magnitude > 1)
         {
@@ -72,11 +73,12 @@ public class PlayerController : MonoBehaviour
         //        input.y = rb.velocity.y;
         //        rb.velocity = input * pSpeed * Time.deltaTime;
         input *= pSpeed * Time.deltaTime;
+
         if (isGrounded)
         {
             //...the 15f is optional and sets max speed
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, new Vector3(input.x, rb.velocity.y, input.z), ref currentVelocity, 0.1f, 15f); 
-            
+            rb.velocity = Vector3.SmoothDamp(rb.velocity, new Vector3(input.x, rb.velocity.y, input.z), ref currentVelocity, 0.1f, 15f);
+
             dampenAirVelocity = Vector2.zero;
         }
         else
@@ -84,12 +86,12 @@ public class PlayerController : MonoBehaviour
             dampenVelocity = Vector3.zero;
             rb.AddForce(new Vector3(input.x, 0f, input.z) * airControlMultiplier, ForceMode.Acceleration); //if in air, force is added
             Vector2 xzMovement = new Vector2(rb.velocity.x, rb.velocity.z); // this affects horizontal movement
-            
-            
-            xzMovement = Vector2.SmoothDamp(xzMovement, xzMovement.normalized * maxSpeed, ref dampenAirVelocity, 0.1f);// this clamps the movement in previous line
-            //Vector2.ClampMagnitude(xzMovement, maxSpeed); 
-            rb.velocity = new Vector3(xzMovement.x, rb.velocity.y, xzMovement.y); //
-
+            if (rb.velocity.magnitude > maxSpeed)
+            {
+                xzMovement = Vector2.SmoothDamp(xzMovement, xzMovement.normalized * maxSpeed, ref dampenAirVelocity, 0.1f);// this clamps the movement in previous line
+                                                                                                                           //Vector2.ClampMagnitude(xzMovement, maxSpeed); 
+                rb.velocity = new Vector3(xzMovement.x, rb.velocity.y, xzMovement.y);
+            }
         }
     }
 
@@ -99,7 +101,6 @@ public class PlayerController : MonoBehaviour
         {
             jumpInputTime = Time.time;
         }
-
         if (isGrounded || !hasCoyoted && (Time.time - lastGroundedTime) < 0.5f)
         {
             if ((Time.time - jumpInputTime) < 0.5f)
@@ -122,7 +123,6 @@ public class PlayerController : MonoBehaviour
 
         if ((groundMask & goLayer) != 0)
         {
-            Debug.Log("Grounded");
 
             isGrounded = true;
             lastGroundedTime = Time.time;
@@ -167,7 +167,5 @@ public class PlayerController : MonoBehaviour
         {
             agent.Warp(hit.position);
         }
-        
     }
-
 }

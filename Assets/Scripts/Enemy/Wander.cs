@@ -31,20 +31,24 @@ public class Wander : MonoBehaviour
     public void Update()
     {
         Vector3 randomPosition = _Range * Random.insideUnitCircle;
-        randomPosition = new Vector3(randomPosition.x, 0, randomPosition.y);
+        randomPosition = new Vector3(randomPosition.x, 0, randomPosition.z);
         _Agent.destination = (transform.position + randomPosition) * mSpeed;
 
-        if (Vector3.Distance(transform.position, player.position) < 1.75f)
+        /*if (Vector3.Distance(transform.position, player.position) < 1.75f)
         {
             Debug.Log("Enemy reached player!");
-//            player.GetComponent<PlayerController>()?.SendHome();
+            //            player.GetComponent<PlayerController>()?.SendHome();
         }
 
         if (_Agent.pathPending || !_Agent.isOnNavMesh || _Agent.remainingDistance > 0.1f)
         {
             return;   // exit function (update) here
-        }
+        }*/
+
+        PickRandom();
+        SlideColor();
     }
+
     public void PickRandom()
     {
         Color randomColor = Random.ColorHSV();
