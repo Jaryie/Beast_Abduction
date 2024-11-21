@@ -7,6 +7,7 @@ using UnityEngine.Playables;
 public static class JsonSaveLoad
 {
     public static string file = Application.dataPath + "/save.json";
+
     public static void Save(HighScoreData data)
     {
         string json = JsonUtility.ToJson(data, true);
@@ -15,7 +16,6 @@ public static class JsonSaveLoad
 
     public static HighScoreData Load()
     {
-
         if (File.Exists(file))
         {
             string json = File.ReadAllText(file);
@@ -23,5 +23,4 @@ public static class JsonSaveLoad
         }
         return null;
     }
-
 }

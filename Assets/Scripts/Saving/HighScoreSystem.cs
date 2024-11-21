@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using TMPro;
 
 public class HighScoreSystem : MonoBehaviour
@@ -11,6 +12,7 @@ public class HighScoreSystem : MonoBehaviour
     public int maxScores = 10;
     public Transform panel;
     public TMP_Text textPrefab;
+
     private void Start()
     { RefreshScoreDisplay(); }
     private void RefreshScoreDisplay()
@@ -25,11 +27,14 @@ public class HighScoreSystem : MonoBehaviour
             text.text = scores[i].ToString();
         }
     }
+
     string[] possibleNames = { "Blinky", "Pinky", "Inky", "Clyde" };
+
     public void NewScore(float score)
     {
         NewScore(possibleNames[Random.Range(0, possibleNames.Length)], score);
     }
+ 
     public void NewScore(string name, float score)
     {
         for (int index = 0; index < scores.Count; index++)
@@ -54,5 +59,4 @@ public class HighScoreSystem : MonoBehaviour
             RefreshScoreDisplay();
         }
     }
-
 }
