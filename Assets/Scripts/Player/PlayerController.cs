@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     public Vector3 home;
-
+    public NavMeshAgent agent;
     public float pSpeed; // float was originally int
     public float jumpPower; // float was originally int
     public float gravity; // float was originally int
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public float airControlMultiplier = 1.6f;
     public float maxSpeed = 10f;
 
-    [SerializeField] private Camera camera;
+    [SerializeField] public Camera camera;
 
     public ObservedTransform playerTransform;
     void Awake()

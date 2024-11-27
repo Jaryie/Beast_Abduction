@@ -4,17 +4,52 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using TMPro;
+using System.Runtime.CompilerServices;
+using System.Linq;
 
 public class HighScoreSystem : MonoBehaviour
 {
     private List<string> names = new List<string>();
     private List<float> scores = new List<float>();
+
     public int maxScores = 10;
+
     public Transform panel;
     public TMP_Text textPrefab;
 
+//    public HighScoreData data;
+    public static HighScoreSystem instance;
+
+    private void Awake()
+    {
+        if (instance ==null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
-    { RefreshScoreDisplay(); }
+    {
+        
+        HighScoreData data = JsonSaveLoad.LoadHighScore();
+        if (data != null)
+        {
+        names = data.names.ToList();
+        scores = data.scores.ToList();
+        }
+        RefreshScoreDisplay();
+    }
+
+    private void OnDestroy()
+    {
+        HighScoreData data = new HighScoreData(scores.ToArray(), names.ToArray());
+        JsonSaveLoad.SaveHighScore(data);
+    }
+
     private void RefreshScoreDisplay()
     {
         for (int i = panel.childCount - 1; i >= 0; i--)

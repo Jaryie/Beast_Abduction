@@ -2,25 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEngine.Playables;
 
 public static class JsonSaveLoad
 {
-    public static string file = Application.dataPath + "/save.json";
+#if UNITY_EDITOR
+    public static string fileHS = Application.dataPath + "/save.json";
+//    public static string filePos = Application.dataPath + "/savePos.json";
+#else
+    public static string fileHS = Application.persistentDataPath + "/saveHS.json";
+ //   public static string filePos = Application.persistentDataPath + "/savePos.json";
+#endif
 
-    public static void Save(HighScoreData data)
+
+    public static void SaveHighScore(HighScoreData data)
     {
-        string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(file, json);
+        string json = JsonUtility.ToJson(data, true); //true makes the file more human readable
+        File.WriteAllText(fileHS, json);
     }
 
-    public static HighScoreData Load()
+
+    public static HighScoreData LoadHighScore()
     {
-        if (File.Exists(file))
+        if (File.Exists(fileHS))
         {
-            string json = File.ReadAllText(file);
+            string json = File.ReadAllText(fileHS);
             return JsonUtility.FromJson<HighScoreData>(json);
         }
+
         return null;
     }
 }

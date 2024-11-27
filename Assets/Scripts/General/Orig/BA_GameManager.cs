@@ -17,7 +17,14 @@ public class BA_GameManager : MonoBehaviour
 
     void Start()
     {
-        gm = this;
+        if (gm == null)
+        {
+            gm = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         captured = 0;
 
         previousCapturedAttained = PlayerPrefs.GetFloat("Captured");
