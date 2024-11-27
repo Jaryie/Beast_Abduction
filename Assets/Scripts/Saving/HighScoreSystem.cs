@@ -13,19 +13,22 @@ public class HighScoreSystem : MonoBehaviour
     private List<float> scores = new List<float>();
 
     public TMP_InputField input;
-    string name = input.name;
+    string name;
+
     public int maxScores = 10;
 
     public Transform panel;
     public TMP_Text textPrefab;
 
 
-//    public HighScoreData data;
+    //    public HighScoreData data;
     public static HighScoreSystem instance;
 
     private void Awake()
     {
-        if (instance ==null)
+        name = input.text;
+
+        if (instance == null)
         {
             instance = this;
         }
@@ -37,12 +40,12 @@ public class HighScoreSystem : MonoBehaviour
 
     private void Start()
     {
-        
+
         HighScoreData data = JsonSaveLoad.LoadHighScore();
         if (data != null)
         {
-        names = data.names.ToList();
-        scores = data.scores.ToList();
+            names = data.names.ToList();
+            scores = data.scores.ToList();
         }
         RefreshScoreDisplay();
     }
@@ -71,9 +74,9 @@ public class HighScoreSystem : MonoBehaviour
 
     public void NewScore(float score)
     {
-        NewScore(name[Random.Range(0, input.Length)], score);
+        NewScore(names[Random.Range(0, names.Count)], score);
     }
- 
+
     public void NewScore(string name, float score)
     {
         for (int index = 0; index < scores.Count; index++)
