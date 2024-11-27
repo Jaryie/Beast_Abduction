@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CameraOffset : MonoBehaviour
 {
-    public ObservedTransform playerTransform;
-    Vector3 playerPos => playerTransform.transform.position;
+    Vector3 playerPos => ObservedTransform.transform.position;
     public Vector3 offset;
     void Update()
     {

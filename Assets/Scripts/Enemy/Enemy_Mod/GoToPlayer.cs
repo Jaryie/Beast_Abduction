@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class GoToPlayer : NavMeshMove
 {
-    public ObservedTransform playerTransform;
     public float detectionRadius;
     void Update()
     {
-        Vector3 vectorToPlayer = playerTransform.transform.position - transform.position;
+        Vector3 vectorToPlayer = ObservedTransform.transform.position - transform.position;
         if (vectorToPlayer.magnitude < detectionRadius)
         {
-            Move(playerTransform.transform.position);
+            Move(ObservedTransform.transform.position);
         }
     }
 }

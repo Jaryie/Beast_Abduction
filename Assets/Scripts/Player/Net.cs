@@ -5,6 +5,7 @@ using UnityEngine;
 public class Net : MonoBehaviour
 {
     public Transform netGO;
+    public Transform playerGO;
     public Collider netCollider;
     public float speed = 4.0f;
     public float currentTime;
@@ -15,13 +16,13 @@ public class Net : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 upDir = Vector3.up;
-            Vector3 forwardDir = gameObject.transform.forward;
+            Vector3 forwardDir = playerGO.transform.forward;
 
             netGO.rotation = Quaternion.LookRotation(forwardDir, upDir);
             currentTime = 0.0f;
-            netCollider.enabled = true;
+            //netCollider.enabled = true;
         }
-
+        
         if (Input.GetMouseButton(0))
         {
             Plane plane = new Plane(Vector3.up, netGO.position);
@@ -34,7 +35,7 @@ public class Net : MonoBehaviour
             }
 
             Vector3 upDir = Vector3.up;
-            Vector3 forwardDir = gameObject.transform.forward;// targetPos - netGO.position;
+            Vector3 forwardDir = playerGO.transform.forward;// targetPos - netGO.position;
 
             Quaternion upRotation = Quaternion.LookRotation(forwardDir, upDir);
             Quaternion forwardRotation = Quaternion.LookRotation(-upDir, forwardDir);
@@ -43,18 +44,16 @@ public class Net : MonoBehaviour
 
             netGO.rotation = Quaternion.Lerp(upRotation, forwardRotation, currentTime);
 
-            if (currentTime >= 1.2f)
+     /*       if (currentTime >= 1.2f)
             {
                 netCollider.enabled = false;
-            }
+            }*/
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        StateMachine sm = other.GetComponent<StateMachine>();
-        if (sm != null)
+        if (other.tag == "Hunt")
         {
-            sm.state = StateMachine.State.Idle;
             StartCoroutine(Capture(other.gameObject));
         }
     }

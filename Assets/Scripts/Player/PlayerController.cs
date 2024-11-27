@@ -30,10 +30,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public Camera camera;
 
-    public ObservedTransform playerTransform;
     void Awake()
     {
-        playerTransform.transform = transform;
+        ObservedTransform.transform = transform;
     }
     void Start()
     {
