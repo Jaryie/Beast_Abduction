@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9c4cd5d71ce5c42a8216dd86238307, type: 3}
   m_Name: AvoidNowHunt
   m_EditorClassIdentifier: 
-  timeLeft: 7
-  activationTime: 0
+  timeLeft: 15
+  activationTime: 2

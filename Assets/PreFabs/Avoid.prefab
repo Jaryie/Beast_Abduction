@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5133453959260684193}
   - component: {fileID: 1279969275514834173}
   - component: {fileID: 7392951639340777356}
+  - component: {fileID: 5317680247557924932}
   m_Layer: 0
   m_Name: Avoid
   m_TagString: Untagged
@@ -130,6 +131,33 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &5317680247557924932
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5430635692279036161}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &8533992468988310856
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6162334006000133797}
+  - component: {fileID: 3858701355379668966}
   m_Layer: 0
   m_Name: Avoid
   m_TagString: Avoid
@@ -162,3 +191,17 @@ Transform:
   - {fileID: 9143235915997784585}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3858701355379668966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8533992468988310856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72949890ed27a1140950ce2daed96825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 11400000, guid: 4308f2ddc3bdc5148bce1b18a5525f6b, type: 2}
+  detectionRadius: 10
