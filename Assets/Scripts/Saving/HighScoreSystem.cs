@@ -12,10 +12,13 @@ public class HighScoreSystem : MonoBehaviour
     private List<string> names = new List<string>();
     private List<float> scores = new List<float>();
 
+    public TMP_InputField input;
+    string name = input.name;
     public int maxScores = 10;
 
     public Transform panel;
     public TMP_Text textPrefab;
+
 
 //    public HighScoreData data;
     public static HighScoreSystem instance;
@@ -63,11 +66,12 @@ public class HighScoreSystem : MonoBehaviour
         }
     }
 
-    string[] possibleNames = { "Blinky", "Pinky", "Inky", "Clyde" };
+    //   string[] possibleNames = { "Blinky", "Pinky", "Inky", "Clyde" };
+
 
     public void NewScore(float score)
     {
-        NewScore(possibleNames[Random.Range(0, possibleNames.Length)], score);
+        NewScore(name[Random.Range(0, input.Length)], score);
     }
  
     public void NewScore(string name, float score)
