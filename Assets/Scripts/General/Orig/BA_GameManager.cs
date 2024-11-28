@@ -17,6 +17,7 @@ public class BA_GameManager : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 180;
         if (gm == null)
         {
             gm = this;

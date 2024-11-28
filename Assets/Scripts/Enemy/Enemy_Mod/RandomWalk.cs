@@ -13,18 +13,18 @@ public class RandomWalk : NavMeshMove
     public float bounceSpeed;
     float curveTime;
 
-    enum State
+    [System.Serializable]
+    public enum State
     {
-        Idle,        
+        Idle,
         Walk,
         Bounce
     }
-
-    State state = State.Walk;
-
+    public State state = State.Walk;
     private void Start()
     {
-    startPosition = transform.position;         
+        startPosition = transform.position;
+        changeDirectionTimer = changeDirectionTime;
     }
 
     void Update()
@@ -32,49 +32,56 @@ public class RandomWalk : NavMeshMove
         switch (state)
         {
             case State.Idle:
-                StartCoroutine(WalkState());
+                StartCoroutine(IdleState());
                 break;
             case State.Walk:
-                StartCoroutine(IdleState());
+                StartCoroutine(WalkState());
                 break;
             case State.Bounce:
                 StartCoroutine(BounceState());
                 break;
             default:
                 break;
-        }    
+        }
     }
 
     IEnumerator WalkState()
     {
         while (state == State.Walk)
         {
-            changeDirectionTimer = changeDirectionTime;
-            Vector3 newDestination = transform.position + Random.insideUnitSphere * walkRadius;
-            Move(newDestination);
+            if (changeDirectionTimer > 1)
+            {
+                changeDirectionTimer = 0f;
+                Vector3 newDestination = transform.position + Random.insideUnitSphere * walkRadius;
+                Move(newDestination);
+            }
+            else
+            {
+                changeDirectionTimer += Time.deltaTime;
+            }
+            yield return null;
         }
-        yield return null;
     }
 
     IEnumerator IdleState()
     {
         while (state == State.Idle)
         {
-            changeDirectionTimer -= 1;
+            //put color changing code in here
+            yield return null;
         }
-            yield return null; 
     }
     IEnumerator BounceState()
     {
         while (state == State.Bounce)
         {
-            transform.position = startPosition + Vector3.up * bounceHeight * bounceCurve.Evaluate(curveTime); 
-            curveTime += Time.deltaTime * bounceSpeed; 
-            if (curveTime > 1) 
+            transform.position = startPosition + Vector3.up * bounceHeight * bounceCurve.Evaluate(curveTime);
+            curveTime += Time.deltaTime * bounceSpeed;
+            if (curveTime > 1)
             {
-                curveTime = 0; 
+                curveTime = 0;
             }
+            yield return null;
         }
-        yield return null; 
     }
 }

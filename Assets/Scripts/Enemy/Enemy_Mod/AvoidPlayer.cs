@@ -4,13 +4,14 @@ using System.Resources;
 using UnityEngine;
 public class AvoidPlayer : NavMeshMove
 {
-    enum State
+    [System.Serializable]
+    public enum State
     {
         Idle,
         Walk,
         Run,
     }
-    State state = State.Idle;
+    public State state = State.Idle;
     public float runRadius;
     public float runDistance;
 
@@ -19,10 +20,10 @@ public class AvoidPlayer : NavMeshMove
         switch (state)
         {
             case State.Idle:
-                StartCoroutine(WalkState());
+                StartCoroutine(IdleState());
                 break;
             case State.Walk:
-                StartCoroutine(IdleState());
+                StartCoroutine(WalkState());
                 break;
             case State.Run:
                 StartCoroutine(RunState());
@@ -31,7 +32,6 @@ public class AvoidPlayer : NavMeshMove
                 break;
         }
     }
-
     IEnumerator RunState()
     {
         while (state == State.Run)

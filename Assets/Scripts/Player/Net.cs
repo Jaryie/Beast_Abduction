@@ -52,6 +52,7 @@ public class Net : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name + " caught by net");
         if (other.tag == "Hunt")
         {
             StartCoroutine(Capture(other.gameObject));

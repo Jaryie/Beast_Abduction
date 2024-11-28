@@ -145,7 +145,6 @@ public class CamCont : MonoBehaviour
             if (moveDistance > 0.01f && _focusCentering > 0f)
             {
                 t = Mathf.Pow(1f - _focusCentering, Time.unscaledDeltaTime); //Pow referes to "the power of..."
-                Debug.Log(t);
             }
 
             if (moveDistance > _focusRadius)

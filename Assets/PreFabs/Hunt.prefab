@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 529116017644546027}
+  - component: {fileID: 2428423792332259063}
   m_Layer: 0
   m_Name: Hunt
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 6268539423235233280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2428423792332259063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551610484619151034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ba5af7a9f1d5940a6e33f17a6e375e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullingDistance: 50
+  renderers:
+  - {fileID: 8501316035262915213}
+  colliders:
+  - {fileID: 2710029228793021775}
+  scripts:
+  - {fileID: 4728644040750777718}
+  agents:
+  - {fileID: 3823773502061296739}
 --- !u!1 &6217454600745609371
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +67,6 @@ GameObject:
   - component: {fileID: 8501316035262915213}
   - component: {fileID: 2710029228793021775}
   - component: {fileID: 3823773502061296739}
-  - component: {fileID: 2922820939715591267}
   - component: {fileID: 4728644040750777718}
   m_Layer: 0
   m_Name: Hunt_Capsule
@@ -154,7 +175,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 51
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -163,34 +184,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!54 &2922820939715591267
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6217454600745609371}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &4728644040750777718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,5 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b19bd1ec34357249ac260761346360a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 2
   runRadius: 5
   runDistance: 7
