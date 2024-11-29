@@ -54,7 +54,7 @@ MonoBehaviour:
   scripts:
   - {fileID: 4728644040750777718}
   agents:
-  - {fileID: 0}
+  - {fileID: 8578983965192752251}
 --- !u!195 &8578983965192752251
 NavMeshAgent:
   m_ObjectHideFlags: 0
