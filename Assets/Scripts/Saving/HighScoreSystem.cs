@@ -19,14 +19,15 @@ public class HighScoreSystem : MonoBehaviour
 
     public Transform panel;
     public TMP_Text textPrefab;
+    [SerializeField] public TMP_Text scorePrefab;
 
-
+    public Display_Monster displayMonster;
     //    public HighScoreData data;
     public static HighScoreSystem instance;
 
     private void Awake()
     {
-        name = input.text;
+//        name = input.text;
 
         if (instance == null)
         {
@@ -40,6 +41,7 @@ public class HighScoreSystem : MonoBehaviour
 
     private void Start()
     {
+        displayMonster = FindObjectOfType<Display_Monster>();
 
         HighScoreData data = JsonSaveLoad.LoadHighScore();
         if (data != null)
@@ -72,12 +74,12 @@ public class HighScoreSystem : MonoBehaviour
     //   string[] possibleNames = { "Blinky", "Pinky", "Inky", "Clyde" };
 
 
-    public void NewScore(float score)
+    public void NewScore(int score)
     {
         NewScore(names[Random.Range(0, names.Count)], score);
     }
 
-    public void NewScore(string name, float score)
+    public void NewScore(string name, int score)
     {
         for (int index = 0; index < scores.Count; index++)
         {
@@ -101,4 +103,12 @@ public class HighScoreSystem : MonoBehaviour
             RefreshScoreDisplay();
         }
     }
+
+    public void EnterName(string name)
+    {
+        NewScore(name, displayMonster.GetComponent<Display_Monster>().GetScore());
+        Debug.Log("EnterName: " + name);
+
+    }
+
 }

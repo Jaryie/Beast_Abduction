@@ -25,4 +25,5 @@ public class HighScoreData
         this.names = names;
     }
 
+
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting.Dependencies.NCalc;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class Display_Monster : MonoBehaviour
 {
@@ -17,9 +18,10 @@ public class Display_Monster : MonoBehaviour
     private int captured;
     private int total;
 
-    private void Start()
+    private void Awake()
     {
         hunt = GameObject.FindGameObjectsWithTag("Hunt");
+        Debug.Log(hunt.Length);
     }
 
     void Update()
@@ -32,5 +34,10 @@ public class Display_Monster : MonoBehaviour
         BA_GameManager.gm.total = hunt.Length;
         total = BA_GameManager.gm.total;
         totalText.text = total.ToString();
+        BA_GameManager.gm.counted = true;
+    }
+    public int GetScore()
+    {
+        return captured;
     }
 }

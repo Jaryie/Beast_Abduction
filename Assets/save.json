@@ -1,6 +1,10 @@
 {
-    "scores": [],
-    "names": [],
+    "scores": [
+        2.0
+    ],
+    "names": [
+        ""
+    ],
     "input": {
         "instanceID": 0
     }

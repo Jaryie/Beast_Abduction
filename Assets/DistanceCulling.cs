@@ -18,11 +18,11 @@ public class DistanceCulling : MonoBehaviour
     void Update()
     {
         bool cull = false;
-        if(Vector3.SqrMagnitude(ObservedTransform.transform.position - transform.position) > cullingDistance*cullingDistance)
+        if (Vector3.SqrMagnitude(ObservedTransform.transform.position - transform.position) > cullingDistance * cullingDistance)
         {
             cull = true;
         }
-        foreach(Collider collider in colliders)
+        foreach (Collider collider in colliders)
         {
             collider.enabled = !cull;
         }

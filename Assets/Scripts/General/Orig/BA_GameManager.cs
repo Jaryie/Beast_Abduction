@@ -17,15 +17,20 @@ public class BA_GameManager : MonoBehaviour
     public float previousCapturedAttained;
 
     private bool win;
+    public bool counted;
 
     [SerializeField] private Canvas winCanvas;
 
-    void Start()
+    private void Awake()
     {
         Application.targetFrameRate = 180;
-
         win = false;
+        counted = false;
+        winCanvas.gameObject.SetActive(false);
+    }
 
+    void Start()
+    {
         if (gm == null)
         {
             gm = this;
@@ -55,22 +60,24 @@ public class BA_GameManager : MonoBehaviour
         {
             changeTimer -= Time.deltaTime;
         }
+
+        WinCondition();
+
     }
 
-    public void TakeCaputured()
+    public void TakeCaptured()
     {
         captured = 0;
+        //        DebugLog.Warning("The Cops have confiscated your kills");
     }
 
     void WinCondition()
     {
-        if (total <=0)
+        if (total == 0 && counted == true)
         {
+            Debug.LogWarning("WinCondition");
             win = true;
-            if (win = true)
-            {
-                winCanvas.enabled = true;
-            }
+            winCanvas.gameObject.SetActive(true);
         }
     }
 }
