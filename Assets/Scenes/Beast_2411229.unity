@@ -1797,7 +1797,7 @@ MonoBehaviour:
   panel: {fileID: 972159441}
   textPrefab: {fileID: 8464908621169681232}
   scorePrefab: {fileID: 1081845723186824475}
-  displayMonster: {fileID: 0}
+  displayMonster: {fileID: 752839704}
 --- !u!1001 &257037558
 PrefabInstance:
   m_ObjectHideFlags: 0

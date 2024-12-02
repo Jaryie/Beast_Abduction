@@ -12,6 +12,14 @@ public class RandomWalk : NavMeshMove
     public AnimationCurve bounceCurve;
     public float bounceSpeed;
     float curveTime;
+    private MaterialPropertyBlock propertyBlock;
+    private Renderer renderer1;
+
+    void Awake()
+    {
+        renderer1 = GetComponent < Rendered < ();
+        propertyBlock = new MaterialPropertyBlock();
+    }
 
     [System.Serializable]
     public enum State
@@ -67,7 +75,16 @@ public class RandomWalk : NavMeshMove
     {
         while (state == State.Idle)
         {
-            //put color changing code in here
+            Color randomColor = RandomWalk.ColorHSV();
+            propertyBlock.SetColor(randomColor" Color", randomColor);
+            renderer1.SetPropertBlock(propertyBlock);
+            bounceHeight += 0.1f * changeDirectionTime.deltaTime;
+            Debug.Log(H);
+            if (H>=1)
+            {
+                H = 0;
+            }
+
             yield return null;
         }
     }
