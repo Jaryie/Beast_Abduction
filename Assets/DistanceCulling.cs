@@ -24,18 +24,22 @@ public class DistanceCulling : MonoBehaviour
         }
         foreach (Collider collider in colliders)
         {
+            if(collider == null) continue;
             collider.enabled = !cull;
         }
         foreach (MeshRenderer renderer in renderers)
         {
+            if (renderer == null) continue;
             renderer.enabled = !cull;
         }
         foreach (MonoBehaviour script in scripts)
         {
+            if (script == null) continue;
             script.enabled = !cull;
         }
         foreach (NavMeshAgent agent in agents)
         {
+            if (agent == null) continue;
             agent.enabled = !cull;
         }
     }

@@ -13,7 +13,6 @@ public class HighScoreSystem : MonoBehaviour
     private List<float> scores = new List<float>();
 
     public TMP_InputField input;
-    string name;
 
     public int maxScores = 10;
 
@@ -37,11 +36,6 @@ public class HighScoreSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        displayMonster = FindObjectOfType<Display_Monster>();
 
         HighScoreData data = JsonSaveLoad.LoadHighScore();
         if (data != null)
@@ -49,6 +43,11 @@ public class HighScoreSystem : MonoBehaviour
             names = data.names.ToList();
             scores = data.scores.ToList();
         }
+        displayMonster = FindObjectOfType<Display_Monster>();
+    }
+
+    private void Start()
+    {
         RefreshScoreDisplay();
     }
 
@@ -104,9 +103,9 @@ public class HighScoreSystem : MonoBehaviour
         }
     }
 
-    public void EnterName(string name)
+    public void EnterName()
     {
-        NewScore(name, displayMonster.GetComponent<Display_Monster>().GetScore());
+        NewScore(input.text, displayMonster.GetScore());
         Debug.Log("EnterName: " + name);
 
     }

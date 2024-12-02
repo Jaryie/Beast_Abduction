@@ -15,10 +15,12 @@ public class RandomWalk : NavMeshMove
     private MaterialPropertyBlock propertyBlock;
     private Renderer renderer1;
 
+
     void Awake()
     {
-        renderer1 = GetComponent < Rendered < ();
+        renderer1 = GetComponent <Renderer>();
         propertyBlock = new MaterialPropertyBlock();
+
     }
 
     [System.Serializable]
@@ -75,15 +77,15 @@ public class RandomWalk : NavMeshMove
     {
         while (state == State.Idle)
         {
-            Color randomColor = RandomWalk.ColorHSV();
-            propertyBlock.SetColor(randomColor" Color", randomColor);
-            renderer1.SetPropertBlock(propertyBlock);
-            bounceHeight += 0.1f * changeDirectionTime.deltaTime;
-            Debug.Log(H);
+            Color randomColor = new Color(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            propertyBlock.SetColor(" Color", randomColor);
+            renderer1.SetPropertyBlock(propertyBlock);
+            bounceHeight += 0.1f * Time.deltaTime;
+/*            Debug.Log(H);
             if (H>=1)
             {
                 H = 0;
-            }
+            }*/
 
             yield return null;
         }

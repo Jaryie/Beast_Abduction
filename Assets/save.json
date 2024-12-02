@@ -1,11 +1,14 @@
 {
     "scores": [
-        2.0
+        1.0,
+        2.0,
+        3.0,
+        3.0
     ],
     "names": [
-        ""
-    ],
-    "input": {
-        "instanceID": 0
-    }
+        "sdasdsad",
+        "sadsads",
+        "freeom",
+        "why"
+    ]
 }
