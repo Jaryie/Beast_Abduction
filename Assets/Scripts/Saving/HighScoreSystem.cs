@@ -53,14 +53,25 @@ public class HighScoreSystem : MonoBehaviour
 
     private void OnDestroy()
     {
+        float []top10Scores = scores.OrderByDescending(x => x).Take(10).ToArray();
         HighScoreData data = new HighScoreData(scores.ToArray(), names.ToArray());
         JsonSaveLoad.SaveHighScore(data);
+        RefreshScoreDisplay();
     }
 
     private void RefreshScoreDisplay()
     {
         for (int i = panel.childCount - 1; i >= 0; i--)
         { Destroy(panel.GetChild(i).gameObject); }
+
+        HighScoreData data = JsonSaveLoad.LoadHighScore();
+        if (data != null)
+        {
+            names = data.names.ToList();
+            scores = data.scores.ToList();
+        }
+
+        displayMonster = FindObjectOfType<Display_Monster>();
         for (int i = 0; i < scores.Count; i++)
         {
             TMP_Text text = Instantiate(textPrefab, panel);
@@ -68,6 +79,7 @@ public class HighScoreSystem : MonoBehaviour
             text = Instantiate(textPrefab, panel);
             text.text = scores[i].ToString();
         }
+
     }
 
     //   string[] possibleNames = { "Blinky", "Pinky", "Inky", "Clyde" };
