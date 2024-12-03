@@ -71,6 +71,16 @@ public class BA_GameManager : MonoBehaviour
         //        DebugLog.Warning("The Cops have confiscated your kills");
     }
 
+     public void Freeze()
+    {
+        runSpeed = 0;
+    }
+
+    public void Slow()
+    {
+        runSpeed = runSpeed/2f
+    }
+
     void WinCondition()
     {
         if (total == 0 && counted == true)
