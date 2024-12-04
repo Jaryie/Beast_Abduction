@@ -56,7 +56,7 @@ public class AvoidPlayer : NavMeshMove
         {
             if (agent.hasPath)
             {
-                Vector3 newDestination = transform.position + Random.insideUnitSphere * runRadius;
+                Vector3 newDestination = transform.position + Random.insideUnitSphere * runRadius * (runSpeed/1.5f);
                 Move(newDestination);
             }
             yield return null;
