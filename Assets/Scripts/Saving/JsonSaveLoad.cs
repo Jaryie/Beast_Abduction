@@ -5,13 +5,13 @@ using System.IO;
 
 public static class JsonSaveLoad
 {
-#if UNITY_EDITOR
+
     public static string fileHS = Application.dataPath + "/save.json";
-//    public static string filePos = Application.dataPath + "/savePos.json";
-#else
+/*    public static string filePos = Application.dataPath + "/savePos.json";
+
     public static string fileHS = Application.persistentDataPath + "/saveHS.json";
- //   public static string filePos = Application.persistentDataPath + "/savePos.json";
-#endif
+   public static string filePos = Application.persistentDataPath + "/savePos.json";*/
+
 
 
     public static void SaveHighScore(HighScoreData data)
