@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoToPlayer : NavMeshMove
 {
     public float detectionRadius;
+    public float runSpeed;
     void Update()
     {
         Vector3 vectorToPlayer = ObservedTransform.transform.position - transform.position;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 529116017644546027}
   - component: {fileID: 2428423792332259063}
   - component: {fileID: 8578983965192752251}
+  - component: {fileID: 5689277734243707487}
   m_Layer: 0
   m_Name: Hunt
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   colliders:
   - {fileID: 2710029228793021775}
   scripts:
-  - {fileID: 4728644040750777718}
+  - {fileID: 0}
   agents:
   - {fileID: 8578983965192752251}
 --- !u!195 &8578983965192752251
@@ -77,6 +78,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5689277734243707487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551610484619151034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b19bd1ec34357249ac260761346360a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  runRadius: 5
+  runDistance: 7
+  runSpeed: 10
 --- !u!1 &6217454600745609371
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +106,6 @@ GameObject:
   - component: {fileID: 4476522215721644500}
   - component: {fileID: 8501316035262915213}
   - component: {fileID: 2710029228793021775}
-  - component: {fileID: 4728644040750777718}
   m_Layer: 0
   m_Name: Hunt_Capsule
   m_TagString: Hunt
@@ -185,18 +201,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4728644040750777718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6217454600745609371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b19bd1ec34357249ac260761346360a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 2
-  runRadius: 5
-  runDistance: 7

@@ -11,6 +11,7 @@ public class BA_GameManager : MonoBehaviour
     public float freezeTimer;
     public float slowTimer;
     public float changeTimer;
+    public float runSpeed;
 
     public int captured;
     public int total;
@@ -78,7 +79,7 @@ public class BA_GameManager : MonoBehaviour
 
     public void Slow()
     {
-        runSpeed = runSpeed/2f
+        runSpeed = runSpeed / 2f;
     }
 
     void WinCondition()

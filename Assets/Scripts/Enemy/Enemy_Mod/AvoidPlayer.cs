@@ -14,6 +14,7 @@ public class AvoidPlayer : NavMeshMove
     public State state = State.Idle;
     public float runRadius;
     public float runDistance;
+    public float runSpeed;
 
     void Update()
     {
@@ -39,7 +40,7 @@ public class AvoidPlayer : NavMeshMove
             Vector3 vectorToPlayer = ObservedTransform.transform.position - transform.position;
             if (vectorToPlayer.magnitude < runRadius)
             {
-                Move(ObservedTransform.transform.position - vectorToPlayer.normalized * runDistance);
+                Move(ObservedTransform.transform.position - vectorToPlayer.normalized * runDistance * runSpeed);
             }
 
             if (vectorToPlayer.magnitude > runRadius * 2)

@@ -7,6 +7,7 @@ public class RandomWalk : NavMeshMove
     public float changeDirectionTime;
     float changeDirectionTimer;
     public float walkRadius;
+    public float runSpeed;
     Vector3 startPosition;
     public float bounceHeight;
     public AnimationCurve bounceCurve;
@@ -62,7 +63,7 @@ public class RandomWalk : NavMeshMove
             if (changeDirectionTimer > 1)
             {
                 changeDirectionTimer = 0f;
-                Vector3 newDestination = transform.position + Random.insideUnitSphere * walkRadius;
+                Vector3 newDestination = transform.position + Random.insideUnitSphere * walkRadius * runSpeed;
                 Move(newDestination);
             }
             else
