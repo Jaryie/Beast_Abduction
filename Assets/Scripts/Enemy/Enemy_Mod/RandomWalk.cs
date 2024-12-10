@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class RandomWalk : NavMeshMove
+public class RandomWalk : NavMeshMove, IClickable
 {
     public float changeDirectionTime;
     float changeDirectionTimer;
@@ -15,13 +16,12 @@ public class RandomWalk : NavMeshMove
     float curveTime;
     private MaterialPropertyBlock propertyBlock;
     private Renderer renderer1;
-
+    public TMP_Text text;
 
     void Awake()
     {
-        renderer1 = GetComponent <Renderer>();
+        renderer1 = GetComponent<Renderer>();
         propertyBlock = new MaterialPropertyBlock();
-
     }
 
     [System.Serializable]
@@ -54,6 +54,24 @@ public class RandomWalk : NavMeshMove
             default:
                 break;
         }
+
+        /*       if (Input.GetMouseButtonDown(1))
+               {
+                   IClickable clicked = GetComponent<IClickable>();
+                   if (clicked != null)
+                   {
+                       clicked.OnClick();
+                   }
+               }*/
+
+
+
+    }
+
+    public void OnClick()
+    {
+        text.text = state.ToString();
+        Debug.Log(state.ToString());
     }
 
     IEnumerator WalkState()
@@ -78,15 +96,15 @@ public class RandomWalk : NavMeshMove
     {
         while (state == State.Idle)
         {
-            Color randomColor = new Color(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            Color randomColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
             propertyBlock.SetColor(" Color", randomColor);
             renderer1.SetPropertyBlock(propertyBlock);
             bounceHeight += 0.1f * Time.deltaTime;
-/*            Debug.Log(H);
-            if (H>=1)
-            {
-                H = 0;
-            }*/
+            /*            Debug.Log(H);
+                        if (H>=1)
+                        {
+                            H = 0;
+                        }*/
 
             yield return null;
         }

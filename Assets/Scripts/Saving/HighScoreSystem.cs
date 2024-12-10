@@ -1,10 +1,10 @@
-using System.Collections;
+//using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+//using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
 using TMPro;
-using System.Runtime.CompilerServices;
+//using System.Runtime.CompilerServices;
 using System.Linq;
 
 public class HighScoreSystem : MonoBehaviour

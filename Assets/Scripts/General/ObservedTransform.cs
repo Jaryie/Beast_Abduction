@@ -5,4 +5,5 @@ using UnityEngine;
 public static class ObservedTransform
 {
     public static Transform transform;
+//    public Transform target { get; }
 }

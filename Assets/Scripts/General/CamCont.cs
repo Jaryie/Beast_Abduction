@@ -35,7 +35,7 @@ public class CamCont : MonoBehaviour
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
     private void OnDisable()

@@ -105,6 +105,25 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.Log("cast");
+                IClickable clicked = hit.transform.gameObject.GetComponent<IClickable>();
+
+                if (clicked != null)
+                {
+                    Debug.Log("cast");
+
+                    clicked.OnClick();
+                }
+            }
+
+        }
     }
             void GetPlayerInput()
             {

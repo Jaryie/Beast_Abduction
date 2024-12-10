@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
+using TMPro;
 using UnityEngine;
-public class AvoidPlayer : NavMeshMove
+public class AvoidPlayer : NavMeshMove, IClickable
 {
+    public TMP_Text text;
     [System.Serializable]
+
+    //   ObservedTransform targetingInterface;
     public enum State
     {
         Idle,
@@ -32,7 +36,22 @@ public class AvoidPlayer : NavMeshMove
             default:
                 break;
         }
+
+        /*        if (Input.GetMouseButtonDown(1))
+                {
+                    IClickable clicked = GetComponent<IClickable>();
+                    if (clicked != null)
+                    {
+                        clicked.OnClick();
+                    }
+
+                }*/
     }
+    public void OnClick()
+    {
+        text.text = state.ToString();
+    }
+
     IEnumerator RunState()
     {
         while (state == State.Run)
@@ -56,7 +75,7 @@ public class AvoidPlayer : NavMeshMove
         {
             if (agent.hasPath)
             {
-                Vector3 newDestination = transform.position + Random.insideUnitSphere * runRadius * (runSpeed/1.5f);
+                Vector3 newDestination = transform.position + Random.insideUnitSphere * runRadius * (runSpeed / 1.5f);
                 Move(newDestination);
             }
             yield return null;
@@ -75,6 +94,5 @@ public class AvoidPlayer : NavMeshMove
     private void OnDestroy()
     {
         BA_GameManager.gm.captured += 1;
-
     }
 }

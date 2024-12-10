@@ -69,10 +69,10 @@ public class BA_GameManager : MonoBehaviour
     public void TakeCaptured()
     {
         captured = 0;
-        //        DebugLog.Warning("The Cops have confiscated your kills");
+        Debug.LogWarning("The Cops have confiscated your kills");
     }
 
-     public void Freeze()
+    public void Freeze()
     {
         runSpeed = 0;
     }

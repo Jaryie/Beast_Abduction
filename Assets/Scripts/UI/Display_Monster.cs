@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting.Dependencies.NCalc;
-using System.Runtime.InteropServices.WindowsRuntime;
+//using Unity.VisualScripting.Dependencies.NCalc;
+//using System.Runtime.InteropServices.WindowsRuntime;
 
 public class Display_Monster : MonoBehaviour
 {
